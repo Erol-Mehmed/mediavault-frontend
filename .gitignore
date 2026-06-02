@@ -1,7 +1,7 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node modules
+/node_modules/
 
-# dependencies
-/node_modules
+# Yarn / pnpm / npm caches & artifacts
 /.pnp
 .pnp.*
 .yarn/*
@@ -9,33 +9,82 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.pnpm-debug.log
+.pnpm-store/
 
-# testing
-/coverage
-
-# next.js
+# Build output
 /.next/
 /out/
+/build/
+/dist/
+/.vercel/
+/.vercel_build_output/
+/.next-tmp/
 
-# production
-/build
+# Next.js generated types (can be regenerated)
+/next-env.d.ts
+*.tsbuildinfo
 
-# misc
-.DS_Store
-*.pem
+# Static caches / bundlers
+/.cache/
+/.cache-loader/
+/parcel-cache/
+/.vite/
 
-# debug
+# Testing
+/coverage/
+.nyc_output/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Environment files (keep an example around)
+.env
+.env.local
+.env.*.local
+.env.test
+!.env.example
 
-# vercel
-.vercel
+# IDE/editor folders
+# JetBrains IDEs
+/.idea/
+/*.iml
+# VS Code
+.vscode/
+.history/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+desktop.ini
+Icon?
+ehthumbs.db
+*.stackdump
+
+# Certificates, keys
+*.pem
+*.key
+*.crt
+
+# Misc
+coverage/
+*.log
+*.local
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Temporary files created by tools
+*.tmp
+*.temp
+*.bak
