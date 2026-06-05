@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import next from '@next/eslint-plugin-next';
-import tseslint from 'typescript-eslint';
+import tsEslint from '@typescript-eslint/eslint-plugin';
+import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
 export default defineConfig([
@@ -15,17 +16,21 @@ export default defineConfig([
   next.configs.recommended,
   next.configs['core-web-vitals'],
 
-  ...tseslint.configs.recommended,
-
-  prettierConfig,
+  ...tsEslint.configs.recommended,
 
   {
+    plugins: {
+      prettier: prettierPlugin,
+    },
     rules: {
-      'prettier/prettier': 'error',
+      // report formatting issues as ESLint errors
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
 
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
     },
   },
+
+  prettierConfig,
 ]);
