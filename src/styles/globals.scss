@@ -1,0 +1,9 @@
+@use './reset';
+@use './variables';
+@use './grid';
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}

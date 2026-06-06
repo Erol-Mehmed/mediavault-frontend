@@ -1,0 +1,29 @@
+:root {
+  --bg: #0b0f1a;
+  --surface: #121a2a;
+  --surface-light: #1a2440;
+
+  --primary: #6c5ce7;
+  --primary-hover: #8577ff;
+
+  --accent: #00d2ff;
+
+  --text: #e6e9f5;
+  --text-muted: #a0a8c0;
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --success: #2ecc71;
+  --danger: #ff4757;
+
+  --gradient-primary: linear-gradient(135deg, #6c5ce7, #00d2ff);
+  --gradient-dark: linear-gradient(180deg, #0b0f1a, #121a2a);
+}
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
