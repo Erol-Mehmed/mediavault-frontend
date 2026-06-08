@@ -1,0 +1,30 @@
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+  }
+
+  &__logo {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: var(--text);
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+}

@@ -2,8 +2,27 @@
 @use './variables';
 @use './grid';
 
+@use './components/header';
+@use './components/footer';
+
+html,
 body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+
+  a {
+    text-decoration: none;
+  }
+
+  .main {
+    flex: 1;
+  }
 }
