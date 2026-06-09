@@ -1,3 +1,4 @@
+@use "sass:math";
 @use './variables' as *;
 
 $grid-columns: 12;
@@ -37,14 +38,14 @@ $gutter: 1rem;
 
 @for $i from 1 through $grid-columns {
   .col-#{$i} {
-    flex: 0 0 percentage(calc($i / $grid-columns));
-    max-width: percentage(calc($i / $grid-columns));
+    flex: 0 0 math.percentage(calc($i / $grid-columns));
+    max-width: math.percentage(calc($i / $grid-columns));
   }
 }
 
 @for $i from 0 through $grid-columns {
   .offset-#{$i} {
-    margin-left: percentage(calc($i / $grid-columns));
+    margin-left: math.percentage(calc($i / $grid-columns));
   }
 }
 
@@ -54,14 +55,14 @@ $gutter: 1rem;
   @media (min-width: $size) {
     @for $i from 1 through $grid-columns {
       .col-#{$name}-#{$i} {
-        flex: 0 0 percentage(calc($i / $grid-columns));
-        max-width: percentage(calc($i / $grid-columns));
+        flex: 0 0 math.percentage(calc($i / $grid-columns));
+        max-width: math.percentage(calc($i / $grid-columns));
       }
     }
 
     @for $i from 0 through $grid-columns {
       .offset-#{$name}-#{$i} {
-        margin-left: percentage(calc($i / $grid-columns));
+        margin-left: math.percentage(calc($i / $grid-columns));
       }
     }
   }
