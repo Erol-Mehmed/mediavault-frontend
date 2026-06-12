@@ -1,13 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface User {
+  id: string;
+  email: string;
+  is_premium: boolean;
+}
 
 interface AuthState {
+  user: User | null;
   accessToken: string | null;
-  isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
+  user: null,
   accessToken: null,
-  isAuthenticated: false,
 };
 
 const authSlice = createSlice({
@@ -15,14 +21,17 @@ const authSlice = createSlice({
   initialState,
 
   reducers: {
-    setCredentials(state, action) {
-      state.accessToken = action.payload;
-      state.isAuthenticated = true;
+    setCredentials(
+      state,
+      action: PayloadAction<{ access_token: string; user: User }>,
+    ) {
+      state.accessToken = action.payload.access_token;
+      state.user = action.payload.user;
     },
 
     logout(state) {
       state.accessToken = null;
-      state.isAuthenticated = false;
+      state.user = null;
     },
   },
 });
