@@ -1,9 +1,10 @@
+@use './variables' as *;
 @use './reset';
-@use './variables';
 @use './grid';
 
-@use './components/header';
-@use './components/footer';
+@use 'shared/components/header';
+@use 'shared/components/footer';
+@use 'features/auth/login-form';
 
 html,
 body {

@@ -21,7 +21,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="login-form">
       <input
         type="text"
         placeholder="Email"
