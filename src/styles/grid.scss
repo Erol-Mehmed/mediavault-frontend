@@ -1,8 +1,10 @@
-@use "sass:math";
-@use './variables' as *;
+@use 'sass:math';
+@use './mixins' as mixins;
 
 $grid-columns: 12;
-$gutter: 1rem;
+$gutter: var(--space-4);
+
+$breakpoint-names: sm, md, lg, xl, xxl;
 
 .container {
   width: 100%;
@@ -21,21 +23,22 @@ $gutter: 1rem;
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: calc($gutter * -0.5);
-  margin-right: calc($gutter * -0.5);
+  margin-left: calc(#{$gutter} / -2);
+  margin-right: calc(#{$gutter} / -2);
 }
 
 [class^='col-'],
 [class*=' col-'] {
-  padding-left: calc($gutter * 0.5);
-  padding-right: calc($gutter * 0.5);
   box-sizing: border-box;
+  padding-left: calc(#{$gutter} / 2);
+  padding-right: calc(#{$gutter} / 2);
 }
 
 .col {
   flex: 1 0 0;
 }
 
+// Default columns
 @for $i from 1 through $grid-columns {
   .col-#{$i} {
     flex: 0 0 math.percentage(calc($i / $grid-columns));
@@ -43,25 +46,25 @@ $gutter: 1rem;
   }
 }
 
+// Default offsets
 @for $i from 0 through $grid-columns {
   .offset-#{$i} {
     margin-left: math.percentage(calc($i / $grid-columns));
   }
 }
 
-// ------------------------------------------------------------------------------
-
-@each $name, $size in $breakpoints {
-  @media (min-width: $size) {
+// Responsive columns and offsets
+@each $breakpoint in $breakpoint-names {
+  @include mixins.respond($breakpoint) {
     @for $i from 1 through $grid-columns {
-      .col-#{$name}-#{$i} {
+      .col-#{$breakpoint}-#{$i} {
         flex: 0 0 math.percentage(calc($i / $grid-columns));
         max-width: math.percentage(calc($i / $grid-columns));
       }
     }
 
     @for $i from 0 through $grid-columns {
-      .offset-#{$name}-#{$i} {
+      .offset-#{$breakpoint}-#{$i} {
         margin-left: math.percentage(calc($i / $grid-columns));
       }
     }

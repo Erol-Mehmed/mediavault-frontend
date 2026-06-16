@@ -10,14 +10,21 @@ export default function LoginForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
-    const data = await authService.login({ email, password });
-    dispatch(setCredentials(data));
+    try {
+      setLoading(true);
 
-    console.log('logged in');
+      const data = await authService.login({ email, password });
+      dispatch(setCredentials(data));
+    } catch (error) {
+      console.log(`Login failed with error: ${error}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -38,7 +45,9 @@ export default function LoginForm() {
         required
       />
 
-      <button type="submit">Login</button>
+      <button disabled={loading} type="submit">
+        {loading ? 'Logging in...' : 'Login'}
+      </button>
     </form>
   );
 }
