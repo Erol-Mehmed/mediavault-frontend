@@ -1,0 +1,47 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+
+  &__icon {
+    display: block;
+  }
+
+  &__text {
+    color: var(--text);
+    font-size: var(--font-xl);
+    font-weight: var(--font-semibold);
+    letter-spacing: 0.3px;
+  }
+}
+
+.logo__text,
+.logo__icon {
+  &:hover {
+    circle {
+      stroke: var(--accent);
+    }
+
+    path {
+      fill: var(--accent);
+    }
+
+    color: var(--accent);
+  }
+
+  &:active {
+    transform: translateY(1px);
+
+    circle {
+      stroke: var(--accent-active);
+    }
+
+    path {
+      fill: var(--accent-active);
+    }
+
+    color: var(--accent-active);
+  }
+}
