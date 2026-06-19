@@ -1,3 +1,3 @@
-export { default as Header } from './Header';
+export { Header } from './header';
 export { default as Footer } from './Footer';
 export { default as Logo } from './Logo';

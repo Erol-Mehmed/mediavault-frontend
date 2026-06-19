@@ -7,4 +7,6 @@ export const authService = {
 
     return response.data;
   },
+
+  // async logout()
 };
