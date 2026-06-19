@@ -8,5 +8,7 @@ export const authService = {
     return response.data;
   },
 
-  // async logout()
+  async logout() {
+    await api.post('/auth/logout');
+  },
 };

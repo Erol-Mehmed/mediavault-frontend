@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/store/hooks';
 import React, { useState } from 'react';
 import { authService } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
+import { redirect } from 'next/navigation';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ export default function LoginForm() {
       console.log(`Login failed with error: ${error}`);
     } finally {
       setLoading(false);
+      redirect('/');
     }
   };
 
