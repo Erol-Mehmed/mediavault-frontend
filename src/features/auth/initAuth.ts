@@ -1,6 +1,10 @@
 import { api } from '@/shared/services/api';
 import { AppDispatch } from '@/store/store';
-import { logout, setCredentials } from '@/features/auth/authSlice';
+import {
+  logout,
+  setCredentials,
+  setInitialized,
+} from '@/features/auth/authSlice';
 
 export const initializeAuth = async (dispatch: AppDispatch) => {
   try {
@@ -14,5 +18,7 @@ export const initializeAuth = async (dispatch: AppDispatch) => {
     );
   } catch {
     dispatch(logout());
+  } finally {
+    dispatch(setInitialized());
   }
 };

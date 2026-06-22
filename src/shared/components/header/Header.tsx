@@ -6,9 +6,11 @@ import AuthenticatedNavigation from './AuthenticatedNavigation';
 import GuestNavigation from './GuestNavigation';
 
 export default function Header() {
-  const user = useAppSelector((state) => state.auth.user);
+  const { isInitialized, user } = useAppSelector((state) => state.auth);
 
-  console.log('user>>>', user);
+  if (!isInitialized) {
+    return null;
+  }
 
   return (
     <header className="header">

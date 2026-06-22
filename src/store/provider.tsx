@@ -2,20 +2,18 @@
 
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
-import React, { useEffect } from 'react';
-import { initializeAuth } from '@/features/auth/initAuth';
-import { useAppDispatch } from '@/store/hooks';
+import React from 'react';
+import { AuthInitializer } from '@/store/authInitalizer';
 
 interface StoreProviderProps {
   children: React.ReactNode;
 }
 
 export const StoreProvider = ({ children }: StoreProviderProps) => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    initializeAuth(dispatch).then((r) => r);
-  }, []);
-
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <AuthInitializer />
+      {children}
+    </Provider>
+  );
 };

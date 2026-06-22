@@ -4,11 +4,13 @@ import { User } from '@/features/auth/authTypes';
 interface AuthState {
   user: User | null;
   accessToken: string | null;
+  isInitialized: boolean;
 }
 
 const initialState: AuthState = {
   user: null,
   accessToken: null,
+  isInitialized: false,
 };
 
 const authSlice = createSlice({
@@ -16,6 +18,9 @@ const authSlice = createSlice({
   initialState,
 
   reducers: {
+    setInitialized(state) {
+      state.isInitialized = true;
+    },
     setCredentials(
       state,
       action: PayloadAction<{ access_token: string; user: User }>,
@@ -31,5 +36,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setInitialized, setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;
