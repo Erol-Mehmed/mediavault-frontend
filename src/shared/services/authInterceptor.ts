@@ -15,6 +15,12 @@ export function setupAuthInterceptor(
   getState: () => RootState,
 ) {
   api.interceptors.request.use((config) => {
+    const token = getState().auth.accessToken;
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
     return config;
   });
 
@@ -59,10 +65,6 @@ export function setupAuthInterceptor(
         refreshPromise = null;
 
         dispatch(logout());
-
-        if (typeof window !== undefined) {
-          window.location.href = '/login';
-        }
 
         return Promise.reject(err);
       }
