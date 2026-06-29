@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  const refreshToken = request.cookies.get('refresh-token')?.value;
-  const isAuthPage = request.nextUrl.pathname.startsWith('./login');
+export function proxy(request: NextRequest) {
+  const refreshToken = request.cookies.get('refresh_token')?.value;
+  const isAuthPage = request.nextUrl.pathname.startsWith('/login');
   const isProtectedRoute =
     request.nextUrl.pathname.startsWith('/account') ||
     request.nextUrl.pathname.startsWith('/media');
