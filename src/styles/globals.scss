@@ -17,8 +17,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-primary);
+  color: var(--text-primary);
 
   a {
     text-decoration: none;

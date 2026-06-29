@@ -1,9 +1,9 @@
 'use client';
 
 import { Provider } from 'react-redux';
-import { store } from '@/store/store';
+import { store } from './store';
 import React from 'react';
-import { AuthInitializer } from '@/store/authInitalizer';
+import AuthInitializer from './authInitalizer';
 
 interface StoreProviderProps {
   children: React.ReactNode;

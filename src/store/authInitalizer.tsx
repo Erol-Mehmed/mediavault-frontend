@@ -6,7 +6,15 @@ import { initializeAuth } from '@/features/auth/initAuth';
 import { setupAuthInterceptor } from '@/shared/services/authInterceptor';
 import { store } from './store';
 
-export const AuthInitializer = () => {
+/**
+ * Initializes authentification on application startup.
+ *
+ * Registers Axios interceptors and restores the user's session
+ * from the backend using the refresh token stored in an httpOnly cookie.
+ *
+ * This component should be mounted once near the root of the application.
+ */
+export default function AuthInitializer() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -15,4 +23,4 @@ export const AuthInitializer = () => {
   }, [dispatch]);
 
   return null;
-};
+}

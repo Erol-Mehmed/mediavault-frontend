@@ -31,7 +31,7 @@ export function setupAuthInterceptor(
       const originalRequest = error.config as RetryRequest;
 
       if (
-        error.status !== 401 ||
+        error.response?.status !== 401 ||
         originalRequest._retry ||
         originalRequest.url === '/auth/refresh'
       ) {
@@ -44,7 +44,7 @@ export function setupAuthInterceptor(
         if (!isRefreshing) {
           isRefreshing = true;
 
-          refreshPromise = api.post('auth/refresh').then(({ data }) => {
+          refreshPromise = api.post('/auth/refresh').then(({ data }) => {
             dispatch(
               setCredentials({
                 access_token: data.access_token,
