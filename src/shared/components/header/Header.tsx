@@ -15,15 +15,15 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
-        <div className="header__inner">
+        <div className="header__inner col-10">
           <Logo />
 
-          <nav className="header__nav">
+          <nav className="nav">
             {user ? <AuthenticatedNavigation /> : <GuestNavigation />}
           </nav>
 
           {user ? (
-            <span className="header-badge">
+            <span className="badge">
               {user.is_premium ? 'Premium' : 'Free'}
             </span>
           ) : null}

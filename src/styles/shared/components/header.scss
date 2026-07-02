@@ -1,28 +1,26 @@
 .header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 64px;
-  }
+    min-height: 65px;
+    border: 0.5px;
 
-  &__nav {
-    display: flex;
-    gap: 1rem;
+    .nav {
+      display: flex;
+      gap: 1rem;
 
-    a {
-      color: var(--text);
+      a {
+        color: var(--text);
 
-      &:hover {
-        color: var(--accent);
-      }
+        &:hover {
+          color: var(--accent);
+        }
 
-      &:active {
-        color: var(--accent-active);
-        transform: translateY(1px);
+        &:active {
+          color: var(--accent-active);
+          transform: translateY(1px);
+        }
       }
     }
   }

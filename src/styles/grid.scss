@@ -1,44 +1,63 @@
 @use 'sass:math';
 @use './mixins' as mixins;
 
-$grid-columns: 12;
-$gutter: var(--space-4);
+/* =========================
+   GRID CONFIG
+========================= */
 
-$breakpoint-names: sm, md, lg, xl, xxl;
+$grid-columns: 12;
+$grid-max-width: 1440px;
+$grid-container-padding: 80px;
+$grid-gutter: 24px;
+
+/* =========================
+   CONTAINERS
+========================= */
 
 .container {
   width: 100%;
-  max-width: 1320px;
+  max-width: $grid-max-width;
   margin: 0 auto;
-  padding-left: $gutter;
-  padding-right: $gutter;
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
 }
 
 .container-fluid {
   width: 100%;
-  padding-left: $gutter;
-  padding-right: $gutter;
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
 }
+
+/* =========================
+   ROW
+========================= */
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: calc(#{$gutter} / -2);
-  margin-right: calc(#{$gutter} / -2);
+  margin-left: calc($grid-gutter / -2);
+  margin-right: calc($grid-gutter / -2);
 }
+
+/* =========================
+   COLUMNS BASE
+========================= */
 
 [class^='col-'],
 [class*=' col-'] {
   box-sizing: border-box;
-  padding-left: calc(#{$gutter} / 2);
-  padding-right: calc(#{$gutter} / 2);
+  padding-left: calc($grid-gutter / 2);
+  padding-right: calc($grid-gutter / 2);
 }
 
 .col {
   flex: 1 0 0;
 }
 
-// Default columns
+/* =========================
+   STATIC COLUMNS
+========================= */
+
 @for $i from 1 through $grid-columns {
   .col-#{$i} {
     flex: 0 0 math.percentage(calc($i / $grid-columns));
@@ -46,14 +65,22 @@ $breakpoint-names: sm, md, lg, xl, xxl;
   }
 }
 
-// Default offsets
+/* =========================
+   OFFSETS
+========================= */
+
 @for $i from 0 through $grid-columns {
   .offset-#{$i} {
     margin-left: math.percentage(calc($i / $grid-columns));
   }
 }
 
-// Responsive columns and offsets
+/* =========================
+   RESPONSIVE GRID
+========================= */
+
+$breakpoint-names: sm, md, lg, xl, xxl;
+
 @each $breakpoint in $breakpoint-names {
   @include mixins.respond($breakpoint) {
     @for $i from 1 through $grid-columns {

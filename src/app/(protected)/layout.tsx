@@ -1,6 +1,6 @@
 'use client';
 
-import AuthGuard from '@/shared/components/auth/AuthGuard';
+import { AuthGuard } from '@/shared/components/auth';
 import React from 'react';
 
 export default function ProtectedLayout({
