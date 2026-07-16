@@ -1,0 +1,51 @@
+@use '../../../variables/radius' as *;
+@use '../../../variables/shadows' as *;
+
+.header {
+  padding: var(--space-18);
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-12) var(--space-24);
+    min-height: 65px;
+    border-radius: $radius-full;
+    box-shadow: $shadow-primary;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      padding: 2px;
+      border-radius: inherit;
+      background: linear-gradient(#AF69F2, #5C78F6);
+
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+      mask-composite: exclude;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        color: var(--text);
+
+        &:hover {
+          color: var(--accent);
+        }
+
+        &:active {
+          color: var(--accent-active);
+          transform: translateY(1px);
+        }
+      }
+    }
+  }
+}

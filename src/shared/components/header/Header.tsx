@@ -3,7 +3,8 @@
 import { useAppSelector } from '@/store/hooks';
 import Logo from '../Logo';
 import AuthenticatedNavigation from './AuthenticatedNavigation';
-import GuestNavigation from './GuestNavigation';
+import GuestNavigationMid from './GuestNavigationMid';
+import GuestNavigationRight from './GuestNavigationRight';
 
 export default function Header() {
   const { isInitialized, user } = useAppSelector((state) => state.auth);
@@ -19,14 +20,16 @@ export default function Header() {
           <Logo />
 
           <nav className="nav">
-            {user ? <AuthenticatedNavigation /> : <GuestNavigation />}
+            {user ? <AuthenticatedNavigation /> : <GuestNavigationMid />}
           </nav>
 
           {user ? (
             <span className="badge">
               {user.is_premium ? 'Premium' : 'Free'}
             </span>
-          ) : null}
+          ) : (
+            <GuestNavigationRight />
+          )}
         </div>
       </div>
     </header>

@@ -2,7 +2,7 @@
 @use './reset';
 @use './grid';
 
-@use 'shared/components/header';
+@use 'shared/components/header/header';
 @use 'shared/components/footer';
 @use 'shared/components/logo';
 @use 'features/auth/login-form';
@@ -17,7 +17,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background: lightblue;
+  background: var(--bg-primary);
   color: var(--text-primary);
 
   a {

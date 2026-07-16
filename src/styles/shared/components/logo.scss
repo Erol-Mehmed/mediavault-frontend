@@ -7,10 +7,11 @@
 
   &__icon {
     display: block;
+    margin-right: var(--space-4);
   }
 
   &__text {
-    color: var(--text);
+    color: var(--text-primary);
     font-size: var(--font-xl);
     font-weight: var(--font-semibold);
     letter-spacing: 0.3px;
