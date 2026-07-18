@@ -1,12 +1,12 @@
 @use './variables' as *;
 @use './reset';
 @use './grid';
+@use 'features/auth' as *;
 
 @use 'shared/components/header/header';
 @use 'shared/components/header/guest-nav-right';
 @use 'shared/components/footer';
 @use 'shared/components/logo';
-@use 'features/auth/login-form';
 
 html,
 body {

@@ -1,0 +1,13 @@
+@use '../../variables/radius' as *;
+@use '../../variables/shadows' as *;
+
+.auth-card-container {
+  width: 100%;
+  max-width: 683px;
+  padding: var(--space-48);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  //-webkit-backdrop-filter: blur(40px);
+  border-radius: $radius-32;
+  box-shadow: $shadow-secondary;
+}

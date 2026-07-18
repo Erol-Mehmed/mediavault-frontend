@@ -1,7 +1,7 @@
 import '@/styles/globals.scss';
 import type { Metadata } from 'next';
 import { StoreProvider } from '@/store/provider';
-import React from 'react';
+import { ReactNode } from 'react';
 import { Header, Footer } from '@/shared/components';
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
