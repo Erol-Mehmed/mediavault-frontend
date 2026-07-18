@@ -5,6 +5,7 @@ export default function GuestNavigationMid() {
     <>
       <Link href="/media">Media</Link>
       <Link href="/discover">Discover</Link>
+      <Link href="/pricing">Pricing</Link>
       <Link href="/search">Search</Link>
     </>
   );

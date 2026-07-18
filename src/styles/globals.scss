@@ -3,6 +3,7 @@
 @use './grid';
 
 @use 'shared/components/header/header';
+@use 'shared/components/header/guest-nav-right';
 @use 'shared/components/footer';
 @use 'shared/components/logo';
 @use 'features/auth/login-form';
@@ -16,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Inter, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
 
