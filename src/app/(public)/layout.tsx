@@ -1,14 +1,14 @@
-'use client';
-
-import { AuthGuard } from '@/shared/components/auth';
+import { Footer, Header } from '@/shared/components';
 import React from 'react';
 
-export default function ProtectedLayout({
+export default function PublicLayout({
   children,
 }: Readonly<React.PropsWithChildren>) {
   return (
-    <AuthGuard>
+    <>
+      <Header />
       <main className="main">{children}</main>
-    </AuthGuard>
+      <Footer />
+    </>
   );
 }

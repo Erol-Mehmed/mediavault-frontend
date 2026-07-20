@@ -1,0 +1,19 @@
+@use '../../../variables/radius' as *;
+@use '../../../variables/shadows' as *;
+
+.auth-header {
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%);
+
+  width: 80%;
+  display: flex;
+  padding: var(--space-18);
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: $radius-32;
+  box-shadow: $shadow-secondary;
+}
