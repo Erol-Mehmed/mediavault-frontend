@@ -11,7 +11,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
     <>
       <AuthHeader>
         <AuthSwitch
-          context="auth-switch__header"
+          context="header-context"
           text="Don't have an account?"
           linkText="Sign Up"
           href="/signup"

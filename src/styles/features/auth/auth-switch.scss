@@ -1,5 +1,16 @@
 .auth-switch {
-  &__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
 
+  .text {
+    margin: 0;
+  }
+
+  &.header-context {
+    .link {
+      padding: var(--space-10);
+      background: var(--accent);
+    }
   }
 }

@@ -5,11 +5,12 @@
   align-items: center;
   gap: var(--space-16);
 
-  .login,
-  .get-started {
+  .login {
     font-size: var(--font-sm);
     color: var(--text-primary);
-    
+    font-weight: var(--font-medium);
+    line-height: 20px;
+
     &:hover {
       color: var(--accent);
     }
@@ -18,16 +19,5 @@
       color: var(--accent-active);
       transform: translateY(1px);
     }
-  }
-
-  .login {
-    font-weight: var(--font-medium);
-    line-height: 20px;
-  }
-
-  .get-started {
-    background: linear-gradient(#6F1DF5, #9967FF);
-    padding: var(--space-12) var(--space-16);
-    border-radius: $radius-28;
   }
 }

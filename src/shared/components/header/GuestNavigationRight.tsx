@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import GradientBtn from '@/shared/components/ui/buttons/GradientBtn';
 
 export default function GuestNavigationRight() {
   return (
@@ -6,9 +7,8 @@ export default function GuestNavigationRight() {
       <Link href="/login" className="login">
         Log in
       </Link>
-      <Link href="/signup" className="get-started">
-        Get Started
-      </Link>
+
+      <GradientBtn href="/signup" linkText="Get Started" />
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default function LoginPage() {
         <LoginForm />
 
         <AuthSwitch
-          context="auth-switch__card"
+          context="card-context"
           text="Don't have an account?"
           linkText="Create Account"
           href="/signup"

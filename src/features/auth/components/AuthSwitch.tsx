@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import GradientBtn from '@/shared/components/ui/buttons/GradientBtn';
 
 interface AuthSwitchProps {
   context: string;
@@ -14,11 +15,16 @@ export default function AuthSwitch({
   href,
 }: AuthSwitchProps) {
   return (
-    <p className="auth-switch">
-      {text}{' '}
-      <Link href={href} className={context}>
-        {linkText}
-      </Link>
-    </p>
+    <div className={`auth-switch ${context ?? ''}`}>
+      <p className="text">{text}</p>
+
+      {context === 'card-context' ? (
+        <Link href={href} className="link">
+          {linkText}
+        </Link>
+      ) : (
+        <GradientBtn linkText={linkText} href={href} />
+      )}
+    </div>
   );
 }

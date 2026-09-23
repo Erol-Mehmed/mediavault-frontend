@@ -1,0 +1,18 @@
+@use '../../../variables/radius' as *;
+
+.gradient-btn {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  background: linear-gradient(#6F1DF5, #9967FF);
+  padding: var(--space-12) var(--space-16);
+  border-radius: $radius-28;
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &:active {
+    color: var(--accent-active);
+    transform: translateY(1px);
+  }
+}

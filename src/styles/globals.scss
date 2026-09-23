@@ -3,6 +3,7 @@
 @use './grid';
 @use 'features/auth' as *;
 @use 'shared/components/header' as *;
+@use 'shared/components/buttons' as *;
 
 @use 'shared/components/footer';
 @use 'shared/components/logo';
