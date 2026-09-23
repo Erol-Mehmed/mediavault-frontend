@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { AuthHeader } from '@/shared/components/header';
-import Link from 'next/link';
+import { AuthSwitch } from '@/features/auth/components';
 
 interface LoginLayoutProps {
   children: ReactNode;
@@ -10,7 +10,12 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
   return (
     <>
       <AuthHeader>
-        Don't have an account? <Link href="/signup">Sign up</Link>
+        <AuthSwitch
+          context="auth-switch__header"
+          text="Don't have an account?"
+          linkText="Sign Up"
+          href="/signup"
+        />
       </AuthHeader>
 
       {children}

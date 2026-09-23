@@ -6,7 +6,6 @@
   user-select: none;
 
   &__icon {
-    display: block;
     margin-right: var(--space-4);
   }
 
@@ -18,8 +17,7 @@
   }
 }
 
-.logo__text,
-.logo__icon {
+.logo__text {
   &:hover {
     circle {
       stroke: var(--accent);
