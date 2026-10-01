@@ -9,8 +9,10 @@ interface AuthCardProps {
 export default function AuthCard({ title, subtitle, children }: AuthCardProps) {
   return (
     <section className="auth-card-container">
-      <h2>{title}</h2>
-      <p>{subtitle}</p>
+      <div className="title-subtitle">
+        <h2>{title}</h2>
+        <p>{subtitle}</p>
+      </div>
 
       {children}
     </section>

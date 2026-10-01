@@ -2,6 +2,10 @@
 @use '../../variables/shadows' as *;
 
 .auth-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-48);
   width: 100%;
   max-width: 683px;
   padding: var(--space-48);
@@ -9,4 +13,21 @@
   backdrop-filter: blur(20px);
   border-radius: $radius-32;
   box-shadow: $shadow-secondary;
+
+  .title-subtitle {
+    text-align: center;
+
+    h2 {
+      line-height: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--font-3xl);
+      font-weight: var(--font-semibold);
+      margin: 0 0 var(--space-10);
+    }
+
+    p {
+      line-height: 24px;
+      color: var(--text-secondary);
+    }
+  }
 }

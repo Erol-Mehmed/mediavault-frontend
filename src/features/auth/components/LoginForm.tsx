@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { authService } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
 import { redirect } from 'next/navigation';
+import InputField from '@/shared/components/ui/InputField';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
@@ -31,20 +32,20 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <input
+      <InputField
+        name="email"
         type="text"
-        placeholder="Email"
+        placeholder="name@email.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        required
       />
 
-      <input
+      <InputField
+        name="password"
         type="text"
-        placeholder="Password"
+        placeholder="••••••••"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        required
       />
 
       <button disabled={loading} type="submit">
