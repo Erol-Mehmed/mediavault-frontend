@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import { authService } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
 import { redirect } from 'next/navigation';
-import InputField from '@/shared/components/ui/InputField';
+import { AuthBtn } from '@/shared/components/auth';
+import { InputField } from '@/shared/components';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
@@ -48,9 +49,7 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button disabled={loading} type="submit">
-        {loading ? 'Logging in...' : 'Login'}
-      </button>
+      <AuthBtn text="Sign In" loading={loading} />
     </form>
   );
 }

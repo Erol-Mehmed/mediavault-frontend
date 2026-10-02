@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { AuthHeader } from '@/shared/components/header';
+import { AuthHeader } from '@/shared/components';
 import { AuthSwitch } from '@/features/auth/components';
 
 interface SignupLayoutProps {

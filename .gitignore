@@ -62,7 +62,6 @@ pnpm-debug.log*
 .LSOverride
 Thumbs.db
 desktop.ini
-Icon?
 ehthumbs.db
 *.stackdump
 
