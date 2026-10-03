@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import GradientBtn from '@/shared/components/ui/buttons/GradientBtn';
+import { GradientBtn } from '@/shared/components';
 
 interface AuthSwitchProps {
   context: string;
