@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation';
 import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
 import AuthDivider from './AuthDivider';
+import Link from 'next/link';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <InputField
+        label="Email Address"
         name="email"
         type="text"
         placeholder="name@email.com"
@@ -44,11 +46,18 @@ export default function LoginForm() {
       />
 
       <InputField
+        label="Password"
         name="password"
-        type="text"
+        type="password"
         placeholder="••••••••"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="input-field-password"
+        labelAction={
+          <Link href="/forgot-password" className="link">
+            Forgot password?
+          </Link>
+        }
       />
 
       <AuthBtn text="Sign In" loading={loading} />

@@ -4,4 +4,22 @@
   .input-field-email {
     margin-bottom: var(--space-24);
   }
+
+  .input-field-password {
+    .link {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.28px;
+      color: var(--secondary);
+
+      &:hover {
+        color: var(--secondary-hover);
+      }
+
+      &:active {
+        color: var(--secondary-active);
+        transform: translateY(1px);
+      }
+    }
+  }
 }

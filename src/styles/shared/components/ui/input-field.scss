@@ -1,15 +1,34 @@
 @use '../../../variables/radius' as *;
 
 .input-field-wrapper {
-  padding: var(--space-14) var(--space-16);
-  background: var(--surface-secondary);
-  border: 1px solid #FFFFFF17;
-  border-radius: $radius-12;
+  .label-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-8);
 
-  input {
-    width: 100%;
-    background: none;
-    border: none;
-    font: var(--font-md);
+    label {
+      line-height: 28px;
+      color: var(--text-secondary);
+    }
+  }
+
+  .input-field-container {
+    padding: var(--space-14) var(--space-16);
+    background: var(--surface-secondary);
+    border: 1px solid #ffffff17;
+    border-radius: $radius-12;
+
+    input {
+      width: 100%;
+      font: var(--font-md);
+      color: var(--text-primary);
+      background: none;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

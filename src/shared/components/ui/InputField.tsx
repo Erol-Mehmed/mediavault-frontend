@@ -1,8 +1,9 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, ReactNode, useState } from 'react';
 
 interface InputFieldProps {
+  label: string;
   icon?: string;
   name: string;
   type: string;
@@ -10,9 +11,11 @@ interface InputFieldProps {
   value: string | number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  labelAction?: ReactNode;
 }
 
 export default function InputField({
+  label,
   icon,
   name,
   type,
@@ -20,6 +23,7 @@ export default function InputField({
   value,
   onChange,
   className,
+  labelAction,
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
@@ -28,21 +32,30 @@ export default function InputField({
 
   return (
     <div className={`input-field-wrapper ${className}`}>
-      {icon && <div className="icon">{icon}</div>}
+      <div className="label-wrapper">
+        <label htmlFor={name}>{label}</label>
 
-      <input
-        type={showPassword ? 'text' : type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        name={name}
-      />
+        {labelAction}
+      </div>
 
-      {type === 'password' && (
-        <div className="icon" onClick={handleTogglePassword}>
-          {showPassword ? 'open' : 'closed'}
-        </div>
-      )}
+      <div className="input-field-container">
+        {icon && <div className="icon">{icon}</div>}
+
+        <input
+          id={name}
+          type={showPassword ? 'text' : type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          name={name}
+        />
+
+        {type === 'password' && (
+          <div className="icon" onClick={handleTogglePassword}>
+            {showPassword ? 'open' : 'closed'}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
