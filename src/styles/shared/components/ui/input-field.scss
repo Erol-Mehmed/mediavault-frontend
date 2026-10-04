@@ -1,11 +1,15 @@
+@use '../../../variables/radius' as *;
+
 .input-field-wrapper {
   padding: var(--space-14) var(--space-16);
+  background: var(--surface-secondary);
+  border: 1px solid #FFFFFF17;
+  border-radius: $radius-12;
 
-  .input-field-container {
-    input {
-      width: 100%;
-      background: none;
-      border: none;
-    }
+  input {
+    width: 100%;
+    background: none;
+    border: none;
+    font: var(--font-md);
   }
 }

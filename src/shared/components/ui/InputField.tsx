@@ -9,6 +9,7 @@ interface InputFieldProps {
   placeholder: string;
   value: string | number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
 export default function InputField({
@@ -18,6 +19,7 @@ export default function InputField({
   placeholder,
   value,
   onChange,
+  className,
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
@@ -25,24 +27,22 @@ export default function InputField({
   };
 
   return (
-    <div className="input-field-wrapper">
-      <div className="input-field-container">
-        {icon && <div className="icon">{icon}</div>}
+    <div className={`input-field-wrapper ${className}`}>
+      {icon && <div className="icon">{icon}</div>}
 
-        <input
-          type={showPassword ? 'text' : type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          name={name}
-        />
+      <input
+        type={showPassword ? 'text' : type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        name={name}
+      />
 
-        {type === 'password' && (
-          <div className="icon" onClick={handleTogglePassword}>
-            {showPassword ? 'open' : 'closed'}
-          </div>
-        )}
-      </div>
+      {type === 'password' && (
+        <div className="icon" onClick={handleTogglePassword}>
+          {showPassword ? 'open' : 'closed'}
+        </div>
+      )}
     </div>
   );
 }

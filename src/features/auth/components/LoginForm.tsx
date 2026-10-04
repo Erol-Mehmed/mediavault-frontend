@@ -40,6 +40,7 @@ export default function LoginForm() {
         placeholder="name@email.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="input-field-email"
       />
 
       <InputField
