@@ -6,7 +6,7 @@ export default function Logo() {
     <Link href="/" className="logo">
       <Image
         src="/images/logo.svg"
-        alt="MediaVault logo"
+        alt="MediaVault logo."
         width={51}
         height={43.42}
       />

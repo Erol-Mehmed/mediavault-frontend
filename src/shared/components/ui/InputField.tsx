@@ -4,7 +4,8 @@ import { ChangeEvent, ReactNode, useState } from 'react';
 
 interface InputFieldProps {
   label: string;
-  icon?: string;
+  icon?: ReactNode;
+  eyeIcon?: ReactNode;
   name: string;
   type: string;
   placeholder: string;
@@ -17,6 +18,7 @@ interface InputFieldProps {
 export default function InputField({
   label,
   icon,
+  eyeIcon,
   name,
   type,
   placeholder,
@@ -39,7 +41,7 @@ export default function InputField({
       </div>
 
       <div className="input-field-container">
-        {icon && <div className="icon">{icon}</div>}
+        {icon}
 
         <input
           id={name}
@@ -51,8 +53,8 @@ export default function InputField({
         />
 
         {type === 'password' && (
-          <div className="icon" onClick={handleTogglePassword}>
-            {showPassword ? 'open' : 'closed'}
+          <div className="eye-icon" onClick={handleTogglePassword}>
+            {eyeIcon}
           </div>
         )}
       </div>

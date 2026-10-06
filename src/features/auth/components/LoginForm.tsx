@@ -9,6 +9,8 @@ import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
 import AuthDivider from './AuthDivider';
 import Link from 'next/link';
+import Image from 'next/image';
+import { EyeIcon } from '@/shared/components/ui/icons';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
@@ -37,6 +39,14 @@ export default function LoginForm() {
     <form onSubmit={handleSubmit} className="login-form">
       <InputField
         label="Email Address"
+        icon={
+          <Image
+            src="/images/auth/email.svg"
+            alt="Email image."
+            width={20}
+            height={16}
+          />
+        }
         name="email"
         type="text"
         placeholder="name@email.com"
@@ -47,12 +57,21 @@ export default function LoginForm() {
 
       <InputField
         label="Password"
+        icon={
+          <Image
+            src="/images/auth/padlock.svg"
+            alt="Padlock image."
+            width={16}
+            height={21}
+          />
+        }
+        eyeIcon={<EyeIcon />}
         name="password"
         type="password"
         placeholder="••••••••"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="input-field-password"
+        className="input-field-password-login"
         labelAction={
           <Link href="/forgot-password" className="link">
             Forgot password?
@@ -60,7 +79,7 @@ export default function LoginForm() {
         }
       />
 
-      <AuthBtn text="Sign In" loading={loading} />
+      <AuthBtn text="Sign In" loadingText="Signing in..." loading={loading} />
 
       <AuthDivider />
     </form>

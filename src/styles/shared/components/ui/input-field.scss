@@ -13,6 +13,14 @@
     }
   }
 
+  &:not(.input-field-password-login) {
+    .input-field-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-12);
+    }
+  }
+
   .input-field-container {
     padding: var(--space-14) var(--space-16);
     background: var(--surface-secondary);
@@ -28,6 +36,52 @@
 
       &:focus {
         outline: none;
+      }
+    }
+  }
+
+  &.input-field-email {
+    margin-bottom: var(--space-24);
+  }
+
+  &.input-field-password-login {
+    .input-field-container {
+      display: flex;
+      align-items: center;
+
+      > img {
+        margin-right: var(--space-12);
+      }
+
+      .eye-icon {
+        svg {
+          cursor: pointer;
+
+          &:hover {
+            color: #ddd6e5;
+          }
+
+          &:active {
+            color: #b8acca;
+            transform: translateY(1px);
+          }
+        }
+      }
+    }
+
+    .link {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.28px;
+      color: var(--secondary);
+
+      &:hover {
+        color: var(--secondary-hover);
+      }
+
+      &:active {
+        color: var(--secondary-active);
+        transform: translateY(1px);
       }
     }
   }
