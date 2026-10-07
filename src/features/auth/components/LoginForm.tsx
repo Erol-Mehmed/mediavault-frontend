@@ -7,7 +7,6 @@ import { setCredentials } from '@/features/auth/authSlice';
 import { redirect } from 'next/navigation';
 import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
-import AuthDivider from './AuthDivider';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EyeIcon } from '@/shared/components/ui/icons';
@@ -80,8 +79,6 @@ export default function LoginForm() {
       />
 
       <AuthBtn text="Sign In" loadingText="Signing in..." loading={loading} />
-
-      <AuthDivider />
     </form>
   );
 }

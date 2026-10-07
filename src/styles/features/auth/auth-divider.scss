@@ -1,7 +1,7 @@
-.divider {
+.auth-divider {
   display: flex;
   align-items: center;
-  margin: var(--space-48) 0 0;
+  width: 100%;
   gap: var(--space-16);
 
   span {

@@ -1,6 +1,6 @@
 export default function AuthDivider() {
   return (
-    <div className="divider">
+    <div className="auth-divider">
       <span>or</span>
     </div>
   );
