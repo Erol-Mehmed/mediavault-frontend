@@ -5,15 +5,13 @@ import {
   LoginForm,
 } from '@/features/auth/components';
 import AuthDivider from '../../../features/auth/components/AuthDivider';
-import AuthFeaturesChecklist from '../../../features/auth/components/AuthFeaturesChecklist';
 import React from 'react';
 
 export default function LoginPage() {
-  const features = ['Your collection', 'Your favorites', 'Your watchlist'];
-
   return (
     <AuthLayout>
       <AuthCard
+        featuresText="Your Entertainment Universe, Organised and Social. Watch. Play. Connect."
         title="Welcome Back"
         subtitle="Sign in to continue your entertainment journey."
       >
@@ -27,8 +25,6 @@ export default function LoginPage() {
           linkText="Create Account"
           href="/signup"
         />
-
-        <AuthFeaturesChecklist features={features} />
       </AuthCard>
     </AuthLayout>
   );
