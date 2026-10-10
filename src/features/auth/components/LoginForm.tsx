@@ -35,7 +35,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
+    <form onSubmit={handleSubmit} className="auth-form">
       <InputField
         label="Email Address"
         icon={
@@ -51,7 +51,7 @@ export default function LoginForm() {
         placeholder="name@email.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="input-field-email"
+        className="input-field-mb"
       />
 
       <InputField
