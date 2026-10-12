@@ -22,12 +22,12 @@
   }
 
   .input-field-container {
-    padding: var(--space-14) var(--space-16);
     background: var(--surface-secondary);
     border: 1px solid #ffffff17;
     border-radius: $radius-12;
 
     input {
+      padding: var(--space-16);
       width: 100%;
       font: var(--font-md);
       color: var(--text-primary);
@@ -40,8 +40,38 @@
     }
   }
 
+  .eye-icon {
+    margin-right: var(--space-14);
+
+    svg {
+      cursor: pointer;
+
+      &:hover {
+        color: #ddd6e5;
+      }
+
+      &:active {
+        color: #b8acca;
+        transform: translateY(1px);
+      }
+    }
+  }
+
   &.input-field-mb {
     margin-bottom: var(--space-24);
+  }
+
+  &.input-field-email-login,
+  &.input-field-password-login {
+    .input-field-container {
+      input {
+        padding-left: 0;
+      }
+
+      > img {
+        margin-left: var(--space-16);
+      }
+    }
   }
 
   &.input-field-password-login {
@@ -51,21 +81,6 @@
 
       > img {
         margin-right: var(--space-12);
-      }
-
-      .eye-icon {
-        svg {
-          cursor: pointer;
-
-          &:hover {
-            color: #ddd6e5;
-          }
-
-          &:active {
-            color: #b8acca;
-            transform: translateY(1px);
-          }
-        }
       }
     }
 

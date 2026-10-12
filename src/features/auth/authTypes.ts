@@ -15,3 +15,13 @@ export interface LoginResponse {
   token_type: string;
   user: User;
 }
+
+export interface SignUpRequest {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface SignUpRequest {
+
+}

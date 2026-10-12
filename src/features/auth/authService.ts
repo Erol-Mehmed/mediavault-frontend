@@ -8,6 +8,8 @@ export const authService = {
     return response.data;
   },
 
+  // async signUp(data: )
+
   async logout() {
     await api.post('/auth/logout');
   },

@@ -9,7 +9,7 @@ import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
 import { EyeIcon } from '@/shared/components/ui/icons';
 
-export default function SignupForm() {
+export default function SignUpForm() {
   const dispatch = useAppDispatch();
 
   const [username, setUsername] = useState('');
@@ -24,7 +24,7 @@ export default function SignupForm() {
     try {
       setLoading(true);
 
-      const data = await authService.login({ username, email, password });
+      const data = await authService.login({ email, password });
       dispatch(setCredentials(data));
     } catch (error) {
       console.log(`Sign up failed with error: ${error}`);
@@ -42,7 +42,7 @@ export default function SignupForm() {
         type="text"
         placeholder="John Doe"
         value={username}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
         className="input-field-mb"
       />
 
@@ -74,7 +74,7 @@ export default function SignupForm() {
         type="password"
         placeholder="••••••••"
         value={confirmPassword}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setConfirmPassword(e.target.value)}
       />
 
       <AuthBtn
