@@ -1,5 +1,10 @@
 import { api } from '@/shared/services/api';
-import { LoginRequest, LoginResponse } from './authTypes';
+import {
+  LoginRequest,
+  LoginResponse,
+  // SignUpRequest,
+  // SignUpResponse,
+} from './authTypes';
 
 export const authService = {
   async login(data: LoginRequest): Promise<LoginResponse> {
@@ -7,9 +12,8 @@ export const authService = {
 
     return response.data;
   },
-
-  // async signUp(data: )
-
+  // async signUp(data: SignUpRequest): Promise<SignUpResponse> {
+  // },
   async logout() {
     await api.post('/auth/logout');
   },

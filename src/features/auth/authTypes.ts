@@ -17,11 +17,21 @@ export interface LoginResponse {
 }
 
 export interface SignUpRequest {
-  username: string;
   email: string;
   password: string;
+  username: string;
+  first_name?: string;
+  last_name?: string;
 }
 
-export interface SignUpRequest {
-
+export interface SignUpResponse {
+  id: string;
+  email: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  is_active: boolean;
+  is_premium: boolean;
+  created_at: string;
+  updated_at: string;
 }
