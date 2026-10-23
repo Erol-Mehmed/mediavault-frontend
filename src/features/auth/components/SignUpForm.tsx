@@ -1,17 +1,13 @@
 'use client';
 
-import { useAppDispatch } from '@/store/hooks';
 import React, { useState } from 'react';
 import { authService } from '@/features/auth/authService';
-import { setCredentials } from '@/features/auth/authSlice';
 import { redirect } from 'next/navigation';
 import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
 import { EyeIcon } from '@/shared/components/ui/icons';
 
 export default function SignUpForm() {
-  const dispatch = useAppDispatch();
-
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,8 +20,11 @@ export default function SignUpForm() {
     try {
       setLoading(true);
 
-      const data = await authService.login({ email, password });
-      dispatch(setCredentials(data));
+      await authService.signUp({
+        email,
+        password,
+        username,
+      });
     } catch (error) {
       console.log(`Sign up failed with error: ${error}`);
     } finally {
