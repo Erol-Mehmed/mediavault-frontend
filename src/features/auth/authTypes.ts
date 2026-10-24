@@ -20,16 +20,12 @@ export interface SignUpRequest {
   email: string;
   password: string;
   username: string;
-  first_name?: string;
-  last_name?: string;
 }
 
 export interface SignUpResponse {
   id: string;
   email: string;
   username: string;
-  first_name: string;
-  last_name: string;
   is_active: boolean;
   is_premium: boolean;
   created_at: string;

@@ -7,7 +7,7 @@ import {
 import AuthDivider from '../../../features/auth/components/AuthDivider';
 import React from 'react';
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
     <AuthLayout>
       <AuthCard

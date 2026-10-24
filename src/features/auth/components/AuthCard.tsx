@@ -5,6 +5,7 @@ interface AuthCardProps {
   title: string;
   subtitle: string;
   children: ReactNode;
+  className?: string;
 }
 
 export default function AuthCard({
@@ -12,9 +13,10 @@ export default function AuthCard({
   title,
   subtitle,
   children,
+  className,
 }: AuthCardProps) {
   return (
-    <section className="auth-card-container">
+    <section className={`auth-card-container ${className ?? ''}`}>
       <p className="features-info">{featuresText}</p>
 
       <div className="title-subtitle">
