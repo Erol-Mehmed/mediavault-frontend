@@ -10,15 +10,30 @@ import { InputField } from '@/shared/components';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EyeIcon } from '@/shared/components/ui/icons';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  loginSchema,
+  LoginFormValues,
+} from '@/features/auth/schemas/login.schema';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.SubmitEvent) => {
+  const onSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     try {
@@ -46,12 +61,11 @@ export default function LoginForm() {
             height={16}
           />
         }
-        name="email"
         type="text"
         placeholder="name@email.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
         className="input-field-email-login input-field-mb"
+        {...register('email')}
+        error={errors.email?.message}
       />
 
       <InputField
@@ -65,17 +79,16 @@ export default function LoginForm() {
           />
         }
         eyeIcon={<EyeIcon />}
-        name="password"
         type="password"
         placeholder="••••••••"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
         className="input-field-password-login"
         labelAction={
           <Link href="/forgot-password" className="link">
             Forgot password?
           </Link>
         }
+        {...register('password')}
+        error={errors.password?.message}
       />
 
       <AuthBtn text="Sign In" loadingText="Signing in..." loading={loading} />

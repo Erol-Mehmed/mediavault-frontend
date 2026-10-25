@@ -100,4 +100,10 @@
       }
     }
   }
+
+  .input-field-error {
+    font-size: var(--font-sm);
+    color: var(--error);
+    margin-top: var(--space-4);
+  }
 }

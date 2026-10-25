@@ -1,18 +1,27 @@
 'use client';
 
-import { ChangeEvent, ReactNode, useState } from 'react';
+import {
+  ReactNode,
+  ChangeEventHandler,
+  ComponentPropsWithRef,
+  useState,
+} from 'react';
 
-interface InputFieldProps {
+interface InputFieldProps extends Omit<
+  ComponentPropsWithRef<'input'>,
+  'type' | 'name' | 'value' | 'onChange' | 'placeholder'
+> {
   label: string;
   icon?: ReactNode;
   eyeIcon?: ReactNode;
   name: string;
   type: string;
   placeholder: string;
-  value: string | number;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   className?: string;
   labelAction?: ReactNode;
+  error?: string;
 }
 
 export default function InputField({
@@ -24,8 +33,11 @@ export default function InputField({
   placeholder,
   value,
   onChange,
+  onBlur,
+  ref,
   className,
   labelAction,
+  error,
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
@@ -33,7 +45,7 @@ export default function InputField({
   };
 
   return (
-    <div className={`input-field-wrapper ${className}`}>
+    <div className={`input-field-wrapper ${className ?? ''}`}>
       <div className="label-wrapper">
         <label htmlFor={name}>{label}</label>
 
@@ -49,7 +61,11 @@ export default function InputField({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
+          ref={ref}
           name={name}
+          aria-invalid={!!error}
+          aria-describedby={error ? `${name}-error` : undefined}
         />
 
         {type === 'password' && (
@@ -58,6 +74,12 @@ export default function InputField({
           </div>
         )}
       </div>
+
+      {error && (
+        <div id={`${name}-error`} className="input-field-error">
+          {error}
+        </div>
+      )}
     </div>
   );
 }
