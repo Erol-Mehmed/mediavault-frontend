@@ -1,3 +1,17 @@
 .auth-form {
   width: 100%;
+
+  .auth-form-error {
+    font-size: var(--font-md);
+    margin-top: var(--space-24);
+    padding: 10px 12px;
+    background-color: #fef2f2;
+    color: var(--error);
+    border: 1px solid var(--error);
+    border-radius: 6px;
+
+    p {
+      text-align: center;
+    }
+  }
 }

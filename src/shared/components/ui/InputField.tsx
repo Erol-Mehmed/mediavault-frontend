@@ -52,7 +52,7 @@ export default function InputField({
         {labelAction}
       </div>
 
-      <div className="input-field-container">
+      <div className={`input-field-container ${error ? 'error' : ''}`}>
         {icon}
 
         <input
@@ -69,7 +69,10 @@ export default function InputField({
         />
 
         {type === 'password' && (
-          <div className="eye-icon" onClick={handleTogglePassword}>
+          <div
+            className={`eye-icon ${showPassword ? 'password-visible' : ''}`}
+            onClick={handleTogglePassword}
+          >
             {eyeIcon}
           </div>
         )}

@@ -26,6 +26,10 @@
     border: 1px solid #ffffff17;
     border-radius: $radius-12;
 
+    &.error {
+      border: 2px solid var(--error);
+    }
+
     input {
       padding: var(--space-16);
       width: 100%;
@@ -53,6 +57,20 @@
       &:active {
         color: #b8acca;
         transform: translateY(1px);
+      }
+    }
+
+    &.password-visible {
+      svg {
+        color: #a78bfa;
+
+        &:hover {
+          color: #c4b5fd;
+        }
+
+        &:active {
+          color: #8b5cf6;
+        }
       }
     }
   }

@@ -1,7 +1,6 @@
 'use client';
 
 import { useAppDispatch } from '@/store/hooks';
-import React, { useState } from 'react';
 import { authService } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
 import { redirect } from 'next/navigation';
@@ -16,13 +15,14 @@ import {
   loginSchema,
   LoginFormValues,
 } from '@/features/auth/schemas/login.schema';
+import { useState } from 'react';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -31,26 +31,23 @@ export default function LoginForm() {
     },
   });
 
-  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState('');
 
-  const onSubmit = async (e: React.SubmitEvent) => {
-    e.preventDefault();
+  const onSubmit = async (values: LoginFormValues) => {
+    setServerError('');
 
     try {
-      setLoading(true);
-
-      const data = await authService.login({ email, password });
+      const data = await authService.login(values);
       dispatch(setCredentials(data));
-    } catch (error) {
-      console.log(`Login failed with error: ${error}`);
-    } finally {
-      setLoading(false);
-      redirect('/');
+    } catch {
+      setServerError('Invalid email or password.');
     }
+
+    redirect('/');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
       <InputField
         label="Email Address"
         icon={
@@ -91,7 +88,18 @@ export default function LoginForm() {
         error={errors.password?.message}
       />
 
-      <AuthBtn text="Sign In" loadingText="Signing in..." loading={loading} />
+      {serverError && (
+        <div className="auth-form-error">
+          <p>{serverError}</p>
+        </div>
+      )}
+
+      <AuthBtn
+        text="Sign In"
+        loadingText="Signing in..."
+        loading={isSubmitting}
+        className={serverError ? 'server-error' : ''}
+      />
     </form>
   );
 }
