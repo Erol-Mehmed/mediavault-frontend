@@ -9,8 +9,11 @@ import { EyeIcon } from '@/shared/components/ui/icons';
 import { useForm } from 'react-hook-form';
 import { signUpSchema, SignUpFormValues } from '../schemas/signup.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setCredentials } from '@/features/auth/authSlice';
+import { useAppDispatch } from '@/store/hooks';
 
 export default function SignUpForm() {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -32,9 +35,13 @@ export default function SignUpForm() {
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { confirmPassword, ...submitData } = values;
+      const { confirmPassword, ...signUpData } = values;
+      await authService.signUp(signUpData);
 
-      await authService.signUp(submitData);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { username, ...loginData } = signUpData;
+      const loginResponseData = await authService.login(loginData);
+      dispatch(setCredentials(loginResponseData));
     } catch {
       setServerError('Sign up failed.');
     }
