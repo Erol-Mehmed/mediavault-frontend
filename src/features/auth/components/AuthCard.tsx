@@ -23,7 +23,12 @@ export default function AuthCard({
         <h2>{title}</h2>
         <p>{subtitle}</p>
       </div>
+
       {children}
+
+      <footer className="auth-footer">
+        <p>MediaVault · Your personal media collection</p>
+      </footer>
     </section>
   );
 }

@@ -16,7 +16,7 @@
 
   .features-info {
     font-size: var(--space-20);
-    color: var(--text-primary);
+    color: var(--muted-purple);
     margin-bottom: var(--space-60);
   }
 
@@ -35,5 +35,13 @@
       line-height: 24px;
       color: var(--text-secondary);
     }
+  }
+
+  .auth-footer {
+    font-size: 10px;
+    color: var(--muted-purple);
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
