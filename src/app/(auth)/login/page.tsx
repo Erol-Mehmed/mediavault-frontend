@@ -3,8 +3,8 @@ import {
   AuthCard,
   AuthSwitch,
   LoginForm,
+  AuthDivider,
 } from '@/features/auth/components';
-import AuthDivider from '../../../features/auth/components/AuthDivider';
 import React from 'react';
 
 export default function LoginPage() {

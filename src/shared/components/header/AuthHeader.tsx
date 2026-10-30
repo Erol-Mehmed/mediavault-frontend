@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Logo } from '@/shared/components';
 
 interface AuthHeaderProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export default function AuthHeader({ children }: AuthHeaderProps) {
@@ -10,7 +10,7 @@ export default function AuthHeader({ children }: AuthHeaderProps) {
     <header className="auth-header">
       <Logo />
 
-      <div className="auth-header__action">{children}</div>
+      {children && <div className="auth-header__action">{children}</div>}
     </header>
   );
 }
