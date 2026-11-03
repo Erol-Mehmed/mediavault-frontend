@@ -1,23 +1,36 @@
 'use client';
 
-import { useAppDispatch } from '@/store/hooks';
 import { authService } from '@/features/auth/authService';
-import { setCredentials } from '@/features/auth/authSlice';
-import { redirect } from 'next/navigation';
 import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
-import Link from 'next/link';
 import Image from 'next/image';
-import { EyeIcon } from '@/shared/components/ui/icons';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
+import {
+  forgotPasswordSchema,
+  ForgotPasswordFormValues,
+} from '@/features/auth/schemas/forgotPassword.schema';
 
 export default function ForgotPasswordForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ForgotPasswordFormValues>({
+    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: '',
+    },
+  });
+
   const [serverError, setServerError] = useState('');
 
-  // const onSubmit = async (values: FormValues) => {
-  // };
+  const onSubmit = async (values: ForgotPasswordFormValues) => {
+    setServerError('');
+
+
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
@@ -45,8 +58,8 @@ export default function ForgotPasswordForm() {
       )}
 
       <AuthBtn
-        text="Sign In"
-        loadingText="Signing in..."
+        text="Send reset link"
+        loadingText="Sending link..."
         loading={isSubmitting}
         className={serverError ? 'server-error' : ''}
       />

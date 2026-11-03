@@ -24,7 +24,7 @@ export default function ForgotPasswordPage() {
         subtitle="No worries. Enter the email address associated with your account and we'll send you a link to reset your password."
         className="forgot-password"
       >
-        {/*<ForgotPasswordForm />*/}
+        <ForgotPasswordForm />
 
         <div className="back-btn">
           <Link href="/login">
