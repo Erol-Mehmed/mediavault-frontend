@@ -5,9 +5,11 @@ import { authService } from '@/features/auth/authService';
 import { useAppDispatch } from '@/store/hooks';
 import { logout } from '@/features/auth/authSlice';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function AuthenticatedNavigation() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const onLogoutClick = async () => {
@@ -15,6 +17,8 @@ export default function AuthenticatedNavigation() {
       setLoading(true);
       await authService.logout();
       dispatch(logout());
+
+      router.push('/login');
     } finally {
       setLoading(false);
     }

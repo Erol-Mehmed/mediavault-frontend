@@ -3,7 +3,7 @@
 import { useAppDispatch } from '@/store/hooks';
 import { authService } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AuthBtn from './AuthBtn';
 import { InputField } from '@/shared/components';
 import Link from 'next/link';
@@ -19,6 +19,7 @@ import { useState } from 'react';
 
 export default function LoginForm() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -39,11 +40,11 @@ export default function LoginForm() {
     try {
       const data = await authService.login(values);
       dispatch(setCredentials(data));
+
+      router.push('/');
     } catch {
       setServerError('Invalid email or password.');
     }
-
-    redirect('/');
   };
 
   return (
