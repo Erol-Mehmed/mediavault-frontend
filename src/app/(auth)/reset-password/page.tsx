@@ -3,7 +3,7 @@ import {
   AuthCard,
   ResetPasswordForm,
 } from '@/features/auth/components';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowIcon } from '@/shared/components';
@@ -24,7 +24,9 @@ export default function ResetPasswordPage() {
         subtitle="Enter your new password below."
         className="reset-password"
       >
-        <ResetPasswordForm />
+        <Suspense fallback={<p>Loading...</p>}>
+          <ResetPasswordForm />
+        </Suspense>
 
         <div className="back-btn">
           <Link href="/login">

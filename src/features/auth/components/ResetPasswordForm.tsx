@@ -11,8 +11,9 @@ import {
   ResetPasswordFormValues,
 } from '@/features/auth/schemas/resetPassword.schema';
 import { EyeIcon } from '@/shared/components/ui/icons';
+import { useSearchParams } from 'next/navigation';
 
-export default function ForgotPasswordForm() {
+export default function ResetPasswordForm() {
   const {
     register,
     handleSubmit,
@@ -24,6 +25,8 @@ export default function ForgotPasswordForm() {
       confirmPassword: '',
     },
   });
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token');
 
   const [apiResponseMessage, setApiResponseMessage] = useState('');
   const [serverError, setServerError] = useState('');
@@ -32,10 +35,18 @@ export default function ForgotPasswordForm() {
     setServerError('');
     setApiResponseMessage('');
 
+    if (!token) {
+      setServerError('Invalid or missing password reset link.');
+      return;
+    }
+
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...resetPasswordData } = values;
-      const data = await authService.resetPassword(resetPasswordData);
+      const data = await authService.resetPassword({
+        ...resetPasswordData,
+        token,
+      });
 
       setApiResponseMessage(data.message);
     } catch {
@@ -45,43 +56,45 @@ export default function ForgotPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
-      <InputField
-        label="Password"
-        eyeIcon={<EyeIcon />}
-        type="password"
-        placeholder="••••••••"
-        className="input-field-mb"
-        {...register('password')}
-        error={errors.password?.message}
-      />
+      {!apiResponseMessage ? (
+        <>
+          <InputField
+            label="Password"
+            eyeIcon={<EyeIcon />}
+            type="password"
+            placeholder="••••••••"
+            className="input-field-mb"
+            {...register('password')}
+            error={errors.password?.message}
+          />
 
-      <InputField
-        label="Confirm Password"
-        eyeIcon={<EyeIcon />}
-        type="password"
-        placeholder="••••••••"
-        {...register('confirmPassword')}
-        error={errors.confirmPassword?.message}
-      />
+          <InputField
+            label="Confirm Password"
+            eyeIcon={<EyeIcon />}
+            type="password"
+            placeholder="••••••••"
+            {...register('confirmPassword')}
+            error={errors.confirmPassword?.message}
+          />
 
-      {serverError && (
-        <div className="auth-form-error">
-          <p>{serverError}</p>
-        </div>
-      )}
+          {serverError && (
+            <div className="auth-form-error">
+              <p>{serverError}</p>
+            </div>
+          )}
 
-      {apiResponseMessage && (
+          <AuthBtn
+            text="Reset Password"
+            loadingText="Resseting Password..."
+            loading={isSubmitting}
+            className={serverError ? 'server-error' : ''}
+          />
+        </>
+      ) : (
         <div className="auth-form-message">
           <p>{apiResponseMessage}</p>
         </div>
       )}
-
-      <AuthBtn
-        text="Send reset link"
-        loadingText="Sending link..."
-        loading={isSubmitting}
-        className={serverError ? 'server-error' : ''}
-      />
     </form>
   );
 }

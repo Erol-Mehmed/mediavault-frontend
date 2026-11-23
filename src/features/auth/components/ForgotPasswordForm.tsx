@@ -52,7 +52,7 @@ export default function ForgotPasswordForm() {
             height={16}
           />
         }
-        type="email"
+        type="text"
         placeholder="name@email.com"
         className="input-field-email-login input-field-mb"
         {...register('email', {
