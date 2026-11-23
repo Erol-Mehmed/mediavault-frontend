@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { AuthHeader } from '@/shared/components';
 
 interface ForgotPasswordLayoutProps {
   children: ReactNode;
@@ -8,11 +7,5 @@ interface ForgotPasswordLayoutProps {
 export default function ForgotPasswordLayout({
   children,
 }: ForgotPasswordLayoutProps) {
-  return (
-    <>
-      <AuthHeader />
-
-      {children}
-    </>
-  );
+  return children;
 }

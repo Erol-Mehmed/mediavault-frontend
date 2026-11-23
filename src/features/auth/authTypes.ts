@@ -31,3 +31,16 @@ export interface SignUpResponse {
   created_at: string;
   updated_at: string;
 }
+
+export interface ForgotPasswordRequest {
+  email: string;
+}
+
+export interface MessageResponse {
+  message: string;
+}
+
+export interface ResetPasswordRequest {
+  token: string;
+  password: string;
+}

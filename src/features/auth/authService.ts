@@ -1,9 +1,11 @@
 import { api } from '@/shared/services/api';
 import {
+  ForgotPasswordRequest,
+  MessageResponse,
   LoginRequest,
   LoginResponse,
   SignUpRequest,
-  SignUpResponse,
+  SignUpResponse, ResetPasswordRequest,
 } from './authTypes';
 
 export const authService = {
@@ -19,5 +21,17 @@ export const authService = {
   },
   async logout() {
     await api.post('/auth/logout');
+  },
+  async forgotPassword(
+    data: ForgotPasswordRequest,
+  ): Promise<MessageResponse> {
+    const response = await api.post('/auth/forgot-password', data);
+
+    return response.data;
+  },
+  async resetPassword(data: ResetPasswordRequest): Promise<MessageResponse> {
+    const response = await api.post('auth/reset-password', data);
+
+    return response.data;
   },
 };

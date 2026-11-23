@@ -4,5 +4,6 @@ export { default as AuthSwitch } from './AuthSwitch';
 export { default as LoginForm } from './LoginForm';
 export { default as SignupForm } from './SignUpForm';
 export { default as ForgotPasswordForm } from './ForgotPasswordForm';
+export { default as ResetPasswordForm } from './ResetPasswordForm';
 export { default as AuthBtn } from './AuthBtn';
 export { default as AuthDivider } from './AuthDivider';

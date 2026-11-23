@@ -59,7 +59,7 @@ export default function LoginForm() {
             height={16}
           />
         }
-        type="text"
+        type="email"
         placeholder="name@email.com"
         className="input-field-email-login input-field-mb"
         {...register('email')}

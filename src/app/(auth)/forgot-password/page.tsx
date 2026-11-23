@@ -20,7 +20,7 @@ export default function ForgotPasswordPage() {
             height={50}
           />
         }
-        title="Forgot your password?"
+        title="Forgot Your Password?"
         subtitle="No worries. Enter the email address associated with your account and we'll send you a link to reset your password."
         className="forgot-password"
       >

@@ -24,12 +24,20 @@ export default function ForgotPasswordForm() {
     },
   });
 
+  const [apiResponseMessage, setApiResponseMessage] = useState('');
   const [serverError, setServerError] = useState('');
 
   const onSubmit = async (values: ForgotPasswordFormValues) => {
     setServerError('');
+    setApiResponseMessage('');
 
+    try {
+      const data = await authService.forgotPassword(values);
 
+      setApiResponseMessage(data.message);
+    } catch {
+      setServerError('Something went wrong.');
+    }
   };
 
   return (
@@ -44,16 +52,27 @@ export default function ForgotPasswordForm() {
             height={16}
           />
         }
-        type="text"
+        type="email"
         placeholder="name@email.com"
         className="input-field-email-login input-field-mb"
-        {...register('email')}
+        {...register('email', {
+          onChange: () => {
+            setServerError('');
+            setApiResponseMessage('');
+          },
+        })}
         error={errors.email?.message}
       />
 
       {serverError && (
         <div className="auth-form-error">
           <p>{serverError}</p>
+        </div>
+      )}
+
+      {apiResponseMessage && (
+        <div className="auth-form-message">
+          <p>{apiResponseMessage}</p>
         </div>
       )}
 

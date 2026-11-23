@@ -62,7 +62,7 @@ export default function SignUpForm() {
 
       <InputField
         label="Email Address"
-        type="text"
+        type="email"
         placeholder="name@email.com"
         className="input-field-mb"
         {...register('email')}

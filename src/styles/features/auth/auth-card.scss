@@ -44,7 +44,8 @@
     text-transform: uppercase;
   }
 
-  &.forgot-password {
+  &.forgot-password,
+  &.reset-password {
     gap: 0;
 
     .title-subtitle {
